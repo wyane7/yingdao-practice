@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA练习 - 课后练习1：订单信息录入表单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        label .hint {
+            color: #bbb;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #4a90d9;
+        }
+        select {
+            cursor: pointer;
+            appearance: auto;
+            background: #fff;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #4a90d9;
+        }
+        .checkbox-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #4a90d9;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .btn-submit:hover {
+            background: #3a7bc8;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            color: #2e7d32;
+            font-size: 15px;
+            margin-top: 20px;
+        }
+        .success-message.show {
+            display: block;
+        }
+        .success-message .detail {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+            text-align: left;
+            padding: 12px;
+            background: #fff;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>课后练习1：订单信息录入表单</h1>
+        <p class="subtitle">
+            考核知识点：变量×3、数据表达式（数字运算 + 字符串拼接）、填写输入框×3、设置下拉框、设置复选框、点击元素、获取元素信息<br>
+            任务：设置3个变量（商品名、单价、数量），用数字运算算总价，用字符串拼接生成摘要，填写表单并提交，获取成功提示文本
+        </p>
+
+        <form id="orderForm">
+            <div class="form-group">
+                <label>商品名称 <span class="hint">（引用变量：商品名）</span></label>
+                <input type="text" id="productName" name="productName" placeholder="例如：蓝牙耳机">
+            </div>
+
+            <div class="form-group">
+                <label>数量 <span class="hint">（引用变量：数量）</span></label>
+                <input type="text" id="quantity" name="quantity" placeholder="例如：10">
+            </div>
+
+            <div class="form-group">
+                <label>备注摘要 <span class="hint">（用数据表达式拼接：商品名 + "×" + 数量 + "，合计" + 总价 + "元"）</span></label>
+                <input type="text" id="summary" name="summary" placeholder="例如：蓝牙耳机×10，合计500元">
+            </div>
+
+            <div class="form-group">
+                <label>商品分类</label>
+                <select id="category" name="category">
+                    <option value="">-- 请选择分类 --</option>
+                    <option value="electronics">电子产品</option>
+                    <option value="clothing">服装鞋帽</option>
+                    <option value="food">食品饮料</option>
+                    <option value="home">家居日用</option>
+                    <option value="office">办公用品</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>配送方式</label>
+                <select id="shipping" name="shipping">
+                    <option value="">-- 请选择配送方式 --</option>
+                    <option value="standard">普通配送</option>
+                    <option value="express">加急配送</option>
+                    <option value="pickup">到店自提</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="giftWrap" name="giftWrap">
+                    <label for="giftWrap">需要礼品包装</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="invoice" name="invoice">
+                    <label for="invoice">需要开具发票</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">提交订单</button>
+        </form>
+
+        <div class="success-message" id="successMsg">
+            ✅ 订单提交成功！我们将尽快为您处理。
+            <div class="detail" id="successDetail"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var productName = document.getElementById('productName').value;
+            var quantity = document.getElementById('quantity').value;
+            var summary = document.getElementById('summary').value;
+            var category = document.getElementById('category');
+            var shipping = document.getElementById('shipping');
+            var giftWrap = document.getElementById('giftWrap').checked;
+            var invoice = document.getElementById('invoice').checked;
+
+            var detail = '商品名称：' + (productName || '（空）') + '\n';
+            detail += '数量：' + (quantity || '（空）') + '\n';
+            detail += '备注摘要：' + (summary || '（空）') + '\n';
+            detail += '商品分类：' + (category.options[category.selectedIndex].text || '（未选择）') + '\n';
+            detail += '配送方式：' + (shipping.options[shipping.selectedIndex].text || '（未选择）') + '\n';
+            detail += '礼品包装：' + (giftWrap ? '是' : '否') + '\n';
+            detail += '开具发票：' + (invoice ? '是' : '否');
+
+            document.getElementById('successDetail').textContent = detail;
+            document.getElementById('successMsg').classList.add('show');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA练习 - 课后练习2：多变量表单自动注册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 560px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        label .hint {
+            color: #bbb;
+            font-weight: normal;
+            font-size: 12px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #4a90d9;
+        }
+        select {
+            cursor: pointer;
+            appearance: auto;
+            background: #fff;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #4a90d9;
+        }
+        .checkbox-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #4a90d9;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+        .btn-submit:hover {
+            background: #3a7bc8;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            color: #2e7d32;
+            font-size: 15px;
+            margin-top: 20px;
+        }
+        .success-message.show {
+            display: block;
+        }
+        .success-message .detail {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+            text-align: left;
+            padding: 12px;
+            background: #fff;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>课后练习2：多变量表单自动注册</h1>
+        <p class="subtitle">
+            考核知识点：变量×3、数据表达式（字符串拼接）、填写输入框×3、设置下拉框、设置复选框、点击元素、获取元素信息<br>
+            任务：设置3个变量（姓名、手机、邮箱前缀），用表达式拼接邮箱，填写所有字段，选择省份，勾选条款，点击注册，获取成功提示文本
+        </p>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label>姓名 <span class="hint">（引用变量：姓名）</span></label>
+                <input type="text" id="username" name="username" placeholder="例如：张三">
+            </div>
+
+            <div class="form-group">
+                <label>手机号码 <span class="hint">（引用变量：手机）</span></label>
+                <input type="text" id="phone" name="phone" placeholder="例如：13800138000">
+            </div>
+
+            <div class="form-group">
+                <label>邮箱 <span class="hint">（用数据表达式拼接：邮箱前缀 + "@example.com"）</span></label>
+                <input type="text" id="email" name="email" placeholder="例如：zhangsan@example.com">
+            </div>
+
+            <div class="form-group">
+                <label>所在省份</label>
+                <select id="province" name="province">
+                    <option value="">-- 请选择省份 --</option>
+                    <option value="zhejiang">浙江</option>
+                    <option value="jiangsu">江苏</option>
+                    <option value="shanghai">上海</option>
+                    <option value="guangdong">广东</option>
+                    <option value="beijing">北京</option>
+                    <option value="sichuan">四川</option>
+                    <option value="hubei">湖北</option>
+                    <option value="shandong">山东</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>用户类型</label>
+                <select id="userType" name="userType">
+                    <option value="">-- 请选择类型 --</option>
+                    <option value="personal">个人用户</option>
+                    <option value="enterprise">企业用户</option>
+                    <option value="developer">开发者</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms">
+                    <label for="agreeTerms">我已阅读并同意《服务条款》和《隐私政策》</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="subscribeNews" name="subscribeNews">
+                    <label for="subscribeNews">订阅产品资讯邮件</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">注册</button>
+        </form>
+
+        <div class="success-message" id="successMsg">
+            ✅ 注册成功！欢迎加入，请查收激活邮件。
+            <div class="detail" id="successDetail"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var province = document.getElementById('province');
+            var userType = document.getElementById('userType');
+            var terms = document.getElementById('agreeTerms').checked;
+            var subscribe = document.getElementById('subscribeNews').checked;
+
+            var detail = '姓名：' + (username || '（空）') + '\n';
+            detail += '手机：' + (phone || '（空）') + '\n';
+            detail += '邮箱：' + (email || '（空）') + '\n';
+            detail += '省份：' + (province.options[province.selectedIndex].text || '（未选择）') + '\n';
+            detail += '用户类型：' + (userType.options[userType.selectedIndex].text || '（未选择）') + '\n';
+            detail += '同意条款：' + (terms ? '是' : '否') + '\n';
+            detail += '订阅资讯：' + (subscribe ? '是' : '否');
+
+            document.getElementById('successDetail').textContent = detail;
+            document.getElementById('successMsg').classList.add('show');
+        });
+    </script>
+</body>
+</html>

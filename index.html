@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA初级课程 · 基本概念 练习页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.6;
+        }
+        .header .badge {
+            display: inline-block;
+            background: #4a90d9;
+            color: #fff;
+            font-size: 12px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .cards {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .card-header {
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-header .tag {
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .tag-classroom {
+            background: #e8f1fb;
+            color: #2a7dc8;
+        }
+        .tag-homework {
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .card-header h2 {
+            font-size: 18px;
+            color: #1a1a1a;
+        }
+        .card-body {
+            padding: 0 28px 24px;
+        }
+        .card-body p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .knowledge-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .kp {
+            font-size: 12px;
+            background: #f5f5f5;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        .card-link {
+            display: inline-block;
+            background: #4a90d9;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .card-link:hover {
+            background: #3a7bc8;
+        }
+        .difficulty {
+            color: #ffb300;
+            font-size: 14px;
+            margin-left: auto;
+        }
+        .note {
+            max-width: 800px;
+            margin: 40px auto 0;
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 10px;
+            padding: 20px 28px;
+        }
+        .note h3 {
+            font-size: 14px;
+            color: #d48806;
+            margin-bottom: 10px;
+        }
+        .note p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.8;
+        }
+        .note code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #c62828;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #ccc;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="badge">影刀初级课程 · 基本概念（第6-9节）</span>
+        <h1>RPA 实操练习页面</h1>
+        <p>在影刀「打开网页」指令中，URL 填写下方对应练习页面的链接即可开始练习</p>
+    </div>
+
+    <div class="cards">
+        <!-- 课堂练习1 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="tag tag-classroom">课堂练习</span>
+                <h2>课堂练习1：百度搜索自动化</h2>
+                <span class="difficulty">★☆☆☆☆</span>
+            </div>
+            <div class="card-body">
+                <p>设置变量存储搜索词，用数据表达式拼接后填写到百度搜索框，点击搜索，获取第一条搜索结果标题。</p>
+                <div class="knowledge-points">
+                    <span class="kp">设置变量</span>
+                    <span class="kp">数据表达式·字符串拼接</span>
+                    <span class="kp">填写输入框</span>
+                    <span class="kp">点击元素</span>
+                    <span class="kp">获取元素信息</span>
+                </div>
+                <p style="color: #999; font-size: 13px;">此练习使用百度网页，无需本地页面。URL 填写 <code style="background:#f5f5f5;padding:2px 6px;border-radius:3px;font-size:12px;">https://www.baidu.com</code></p>
+            </div>
+        </div>
+
+        <!-- 课堂练习2 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="tag tag-classroom">课堂练习</span>
+                <h2>课堂练习2：表单自动填写</h2>
+                <span class="difficulty">★★☆☆☆</span>
+            </div>
+            <div class="card-body">
+                <p>设置列表变量和普通变量，用数据表达式拼接城市和日期，填入备注框，设置两个下拉框，勾选复选框，点击提交。</p>
+                <div class="knowledge-points">
+                    <span class="kp">设置变量</span>
+                    <span class="kp">数据表达式·字符串拼接</span>
+                    <span class="kp">数据表达式·列表</span>
+                    <span class="kp">填写输入框</span>
+                    <span class="kp">设置下拉框</span>
+                    <span class="kp">设置复选框</span>
+                    <span class="kp">点击元素</span>
+                </div>
+                <a href="practice-classroom2.html" class="card-link">打开练习页面 →</a>
+            </div>
+        </div>
+
+        <!-- 课后练习1 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="tag tag-homework">课后练习</span>
+                <h2>课后练习1：订单信息录入表单</h2>
+                <span class="difficulty">★★★☆☆</span>
+            </div>
+            <div class="card-body">
+                <p>设置3个变量（商品名、单价、数量），用数字运算算总价，用字符串拼接生成摘要，填写表单并提交，获取成功提示文本。</p>
+                <div class="knowledge-points">
+                    <span class="kp">设置变量×3</span>
+                    <span class="kp">数据表达式·数字运算</span>
+                    <span class="kp">数据表达式·字符串拼接</span>
+                    <span class="kp">填写输入框×3</span>
+                    <span class="kp">设置下拉框</span>
+                    <span class="kp">设置复选框</span>
+                    <span class="kp">点击元素</span>
+                    <span class="kp">获取元素信息</span>
+                </div>
+                <a href="practice-homework1.html" class="card-link">打开练习页面 →</a>
+            </div>
+        </div>
+
+        <!-- 课后练习2 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="tag tag-homework">课后练习</span>
+                <h2>课后练习2：多变量表单自动注册</h2>
+                <span class="difficulty">★★★☆☆</span>
+            </div>
+            <div class="card-body">
+                <p>设置3个变量和1个列表变量，用表达式拼接邮箱地址和省份取值，填写所有字段，选择省份和用户类型，勾选条款，点击注册，获取成功提示。</p>
+                <div class="knowledge-points">
+                    <span class="kp">设置变量×3</span>
+                    <span class="kp">数据表达式·字符串拼接</span>
+                    <span class="kp">数据表达式·列表</span>
+                    <span class="kp">填写输入框×3</span>
+                    <span class="kp">设置下拉框×2</span>
+                    <span class="kp">设置复选框×2</span>
+                    <span class="kp">点击元素</span>
+                    <span class="kp">获取元素信息</span>
+                </div>
+                <a href="practice-homework2.html" class="card-link">打开练习页面 →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="note">
+        <h3>📋 使用说明</h3>
+        <p>
+            1. 在影刀流程中拖入「打开网页」指令<br>
+            2. 浏览器类型选择"<strong>影刀浏览器</strong>"（Mac 用户必须选影刀浏览器）<br>
+            3. URL 填写上方对应练习页面的链接（点击"打开练习页面"后复制浏览器地址栏的 URL）<br>
+            4. 运行后即可用影刀元素捕获功能捕获页面元素<br>
+            5. 课堂练习1使用百度网页（<code>https://www.baidu.com</code>），无需打开本站页面
+        </p>
+    </div>
+
+    <div class="footer">
+        影刀初级课程 · 基本概念（第6-9节）实操练习 · 2026-08
+    </div>
+</body>
+</html>
