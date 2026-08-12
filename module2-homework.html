@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课后作业 - 模块2·基本概念 - 影刀RPA练习</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .breadcrumb {
+            max-width: 800px;
+            margin: 0 auto 24px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .breadcrumb a { color: #4a90d9; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .header { text-align: center; max-width: 800px; margin: 0 auto 40px; }
+        .header .badge {
+            display: inline-block;
+            background: #fff3e0;
+            color: #e65100;
+            font-size: 12px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .header h1 { font-size: 26px; color: #1a1a1a; margin-bottom: 8px; }
+        .header p { font-size: 14px; color: #888; }
+        .cards {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .card-header {
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-header .tag {
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .card-header h2 { font-size: 18px; color: #1a1a1a; }
+        .difficulty { color: #ffb300; font-size: 14px; margin-left: auto; }
+        .card-body { padding: 0 28px 24px; }
+        .card-body p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 12px; }
+        .knowledge-points { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .kp { font-size: 12px; background: #f5f5f5; color: #555; padding: 4px 10px; border-radius: 4px; }
+        .card-link {
+            display: inline-block;
+            background: #4a90d9;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .card-link:hover { background: #3a7bc8; }
+        .footer { text-align: center; margin-top: 40px; color: #ccc; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="index.html">首页</a> / <a href="module2-basic-concepts.html">模块2·基本概念</a> / 课后作业
+    </div>
+
+    <div class="header">
+        <span class="badge">课后作业</span>
+        <h1>课后练习列表</h1>
+        <p>模块2·基本概念（第6-9节）· 共 2 题</p>
+    </div>
+
+    <div class="cards">
+        <!-- 课后练习1 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="tag">课后练习</span>
+                <h2>课后练习1：订单信息录入表单</h2>
+                <span class="difficulty">★★★☆☆</span>
+            </div>
+            <div class="card-body">
+                <p>设置3个变量（商品名、单价、数量），用数字运算算总价，用字符串拼接生成摘要，填写表单并提交，获取成功提示文本。</p>
+                <div class="knowledge-points">
+                    <span class="kp">设置变量×3</span>
+                    <span class="kp">数据表达式·数字运算</span>
+                    <span class="kp">数据表达式·字符串拼接</span>
+                    <span class="kp">填写输入框×3</span>
+                    <span class="kp">设置下拉框</span>
+                    <span class="kp">设置复选框</span>
+                    <span class="kp">点击元素</span>
+                    <span class="kp">获取元素信息</span>
+                </div>
+                <a href="practice-homework1.html" class="card-link">打开练习页面 →</a>
+            </div>
+        </div>
+
+        <!-- 课后练习2 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="tag">课后练习</span>
+                <h2>课后练习2：多变量表单自动注册</h2>
+                <span class="difficulty">★★★☆☆</span>
+            </div>
+            <div class="card-body">
+                <p>设置3个变量和1个列表变量，用表达式拼接邮箱地址和省份取值，填写所有字段，选择省份和用户类型，勾选条款，点击注册，获取成功提示。</p>
+                <div class="knowledge-points">
+                    <span class="kp">设置变量×3</span>
+                    <span class="kp">数据表达式·字符串拼接</span>
+                    <span class="kp">数据表达式·列表</span>
+                    <span class="kp">填写输入框×3</span>
+                    <span class="kp">设置下拉框×2</span>
+                    <span class="kp">设置复选框×2</span>
+                    <span class="kp">点击元素</span>
+                    <span class="kp">获取元素信息</span>
+                </div>
+                <a href="practice-homework2.html" class="card-link">打开练习页面 →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        影刀初级课程 · 基本概念（第6-9节）· 课后作业 · 2026-08
+    </div>
+</body>
+</html>
