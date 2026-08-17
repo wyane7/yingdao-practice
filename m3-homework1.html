@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA练习 - 课后练习1：新闻资讯批量采集</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h1 { font-size: 22px; margin-bottom: 8px; color: #1a1a1a; }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .breadcrumb { font-size: 14px; color: #aaa; margin-bottom: 24px; }
+        .breadcrumb a { color: #4a90d9; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .news-list { display: flex; flex-direction: column; gap: 16px; }
+        .news-item {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-left: 4px solid #4a90d9;
+            border-radius: 8px;
+            padding: 20px 24px;
+        }
+        .news-title { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; line-height: 1.5; }
+        .news-meta { font-size: 13px; color: #999; display: flex; gap: 16px; }
+        .news-meta .date { color: #e65100; }
+        .news-meta .source { color: #4a90d9; }
+        .news-meta .category {
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #666;
+        }
+        .stats {
+            margin-top: 24px;
+            padding: 16px 24px;
+            background: #e8f1fb;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #2a7dc8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> / <a href="module3-first-robot.html">模块3·我的第一个机器人</a> / <a href="module3-homework.html">课后作业</a> / 课后练习1
+        </div>
+        <h1>课后练习1：新闻资讯批量采集</h1>
+        <p class="subtitle">
+            考核知识点：相似元素捕获、获取元素信息、变量、数据表达式、打印日志<br>
+            任务：独立搭建完整抓取机器人，抓取所有新闻的标题、日期、来源，用打印日志记录采集进度和结果
+        </p>
+
+        <div class="news-list">
+            <div class="news-item">
+                <div class="news-title">公司荣获2026年度创新企业奖</div>
+                <div class="news-meta">
+                    <span class="date">2026-08-15</span>
+                    <span class="source">企业官网</span>
+                    <span class="category">企业新闻</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">新产品线正式发布，覆盖全国30个城市</div>
+                <div class="news-meta">
+                    <span class="date">2026-08-12</span>
+                    <span class="source">科技日报</span>
+                    <span class="category">产品动态</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">年度技术峰会圆满落幕，500人参会</div>
+                <div class="news-meta">
+                    <span class="date">2026-08-10</span>
+                    <span class="source">内部通讯</span>
+                    <span class="category">企业新闻</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">与某世界500强企业达成战略合作</div>
+                <div class="news-meta">
+                    <span class="date">2026-08-08</span>
+                    <span class="source">企业官网</span>
+                    <span class="category">合作动态</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">员工拓展训练营在杭州基地开营</div>
+                <div class="news-meta">
+                    <span class="date">2026-08-05</span>
+                    <span class="source">人力资源部</span>
+                    <span class="category">企业新闻</span>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-title">季度财报发布：营收同比增长25%</div>
+                <div class="news-meta">
+                    <span class="date">2026-08-01</span>
+                    <span class="source">财经网</span>
+                    <span class="category">财务报告</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            共 6 条新闻 · 练习目标：抓取全部信息，用打印日志输出每条新闻的标题和日期，最后输出采集总数
+        </div>
+    </div>
+</body>
+</html>
