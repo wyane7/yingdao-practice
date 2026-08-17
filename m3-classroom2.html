@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA练习 - 课堂练习2：员工通讯录数据抓取</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h1 { font-size: 22px; margin-bottom: 8px; color: #1a1a1a; }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 24px;
+        }
+        .breadcrumb a { color: #4a90d9; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .employee-list { display: flex; flex-direction: column; gap: 16px; }
+        .employee-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .employee-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #4a90d9;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .employee-info { flex: 1; }
+        .employee-name { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+        .employee-meta { font-size: 13px; color: #888; }
+        .employee-meta .dept { color: #4a90d9; }
+        .employee-meta .sep { margin: 0 8px; color: #ddd; }
+        .employee-id { font-size: 12px; color: #ccc; }
+        .stats {
+            margin-top: 24px;
+            padding: 16px 24px;
+            background: #e8f1fb;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #2a7dc8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> / <a href="module3-first-robot.html">模块3·我的第一个机器人</a> / <a href="module3-classroom.html">课堂作业</a> / 课堂练习2
+        </div>
+        <h1>课堂练习2：员工通讯录数据抓取</h1>
+        <p class="subtitle">
+            考核知识点：相似元素捕获、获取元素信息、变量存储、打印日志<br>
+            任务：搭建抓取机器人，提取每位员工的姓名、部门、职位，在关键步骤插入打印日志，通过日志判断机器人是否正常运行
+        </p>
+
+        <div class="employee-list">
+            <div class="employee-card">
+                <div class="employee-avatar">张</div>
+                <div class="employee-info">
+                    <div class="employee-name">张伟</div>
+                    <div class="employee-meta">
+                        <span class="dept">技术部</span>
+                        <span class="sep">|</span>
+                        <span>前端工程师</span>
+                        <span class="sep">|</span>
+                        <span class="employee-id">EMP-001</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee-card">
+                <div class="employee-avatar">李</div>
+                <div class="employee-info">
+                    <div class="employee-name">李娜</div>
+                    <div class="employee-meta">
+                        <span class="dept">市场部</span>
+                        <span class="sep">|</span>
+                        <span>市场专员</span>
+                        <span class="sep">|</span>
+                        <span class="employee-id">EMP-002</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee-card">
+                <div class="employee-avatar">王</div>
+                <div class="employee-info">
+                    <div class="employee-name">王强</div>
+                    <div class="employee-meta">
+                        <span class="dept">技术部</span>
+                        <span class="sep">|</span>
+                        <span>后端工程师</span>
+                        <span class="sep">|</span>
+                        <span class="employee-id">EMP-003</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee-card">
+                <div class="employee-avatar">刘</div>
+                <div class="employee-info">
+                    <div class="employee-name">刘洋</div>
+                    <div class="employee-meta">
+                        <span class="dept">人事部</span>
+                        <span class="sep">|</span>
+                        <span>HR专员</span>
+                        <span class="sep">|</span>
+                        <span class="employee-id">EMP-004</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee-card">
+                <div class="employee-avatar">陈</div>
+                <div class="employee-info">
+                    <div class="employee-name">陈思</div>
+                    <div class="employee-meta">
+                        <span class="dept">财务部</span>
+                        <span class="sep">|</span>
+                        <span>会计</span>
+                        <span class="sep">|</span>
+                        <span class="employee-id">EMP-005</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="employee-card">
+                <div class="employee-avatar">赵</div>
+                <div class="employee-info">
+                    <div class="employee-name">赵雷</div>
+                    <div class="employee-meta">
+                        <span class="dept">销售部</span>
+                        <span class="sep">|</span>
+                        <span>销售经理</span>
+                        <span class="sep">|</span>
+                        <span class="employee-id">EMP-006</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            共 6 位员工 · 练习目标：用打印日志输出每位员工的信息，确认数据抓取完整
+        </div>
+    </div>
+</body>
+</html>
