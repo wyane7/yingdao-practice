@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA练习 - 课后练习2：商品比价数据抓取</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h1 { font-size: 22px; margin-bottom: 8px; color: #1a1a1a; }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .breadcrumb { font-size: 14px; color: #aaa; margin-bottom: 24px; }
+        .breadcrumb a { color: #4a90d9; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .compare-col h2 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #4a90d9;
+        }
+        .compare-col h2 .tag {
+            font-size: 12px;
+            background: #4a90d9;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .product-list { display: flex; flex-direction: column; gap: 12px; }
+        .product-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product-name { font-size: 15px; color: #333; }
+        .product-price { font-size: 18px; font-weight: bold; color: #e65100; }
+        .stats {
+            margin-top: 28px;
+            padding: 16px 24px;
+            background: #e8f1fb;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #2a7dc8;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .compare-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> / <a href="module3-first-robot.html">模块3·我的第一个机器人</a> / <a href="module3-homework.html">课后作业</a> / 课后练习2
+        </div>
+        <h1>课后练习2：商品比价数据抓取</h1>
+        <p class="subtitle">
+            考核知识点：相似元素捕获、多组数据抓取、变量存储、打印日志<br>
+            任务：分别抓取A店和B店的商品数据，用打印日志输出两组价格对比，完整流程：打开页面→抓取A组→抓取B组→日志输出对比
+        </p>
+
+        <div class="compare-grid">
+            <div class="compare-col">
+                <h2><span class="tag">A店</span>商品列表</h2>
+                <div class="product-list">
+                    <div class="product-card">
+                        <span class="product-name">蓝牙耳机</span>
+                        <span class="product-price">¥199</span>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-name">无线鼠标</span>
+                        <span class="product-price">¥89</span>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-name">机械键盘</span>
+                        <span class="product-price">¥299</span>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-name">USB集线器</span>
+                        <span class="product-price">¥49</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compare-col">
+                <h2><span class="tag">B店</span>商品列表</h2>
+                <div class="product-list">
+                    <div class="product-card">
+                        <span class="product-name">蓝牙耳机</span>
+                        <span class="product-price">¥179</span>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-name">无线鼠标</span>
+                        <span class="product-price">¥79</span>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-name">机械键盘</span>
+                        <span class="product-price">¥259</span>
+                    </div>
+                    <div class="product-card">
+                        <span class="product-name">USB集线器</span>
+                        <span class="product-price">¥39</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            A店 4 件商品 · B店 4 件商品 · 练习目标：用打印日志输出每件商品在两店的价格对比
+        </div>
+    </div>
+</body>
+</html>
