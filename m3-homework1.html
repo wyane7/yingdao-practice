@@ -51,29 +51,65 @@
         }
         .pagination {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 8px;
             margin-top: 28px;
             padding-top: 20px;
             border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #666;
         }
-        .page-btn {
-            padding: 8px 24px;
-            background: #4a90d9;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
+        .page-arrow, .page-num, .jump-btn {
+            min-width: 28px;
+            height: 28px;
+            padding: 0 8px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #f56c6c;
+            font-size: 13px;
             font-family: inherit;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
-        .page-btn:hover { background: #3a7dc9; }
-        .page-btn:disabled {
-            background: #ccc;
+        .page-arrow:hover:not(:disabled), .page-num:hover:not(.active), .jump-btn:hover {
+            background: #fff5f5;
+        }
+        .page-arrow:disabled, .page-num:disabled {
+            color: #ccc;
+            border-color: #eee;
             cursor: not-allowed;
+            background: #fafafa;
         }
-        .page-info { font-size: 14px; color: #666; }
+        .page-num.active {
+            background: #f56c6c;
+            color: #fff;
+            border-color: #f56c6c;
+        }
+        .page-numbers {
+            display: inline-flex;
+            gap: 6px;
+        }
+        .page-jump {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 8px;
+        }
+        .jump-input {
+            width: 38px;
+            height: 28px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+        }
+        .jump-input:focus { border-color: #f56c6c; }
         .stats {
             margin-top: 24px;
             padding: 16px 24px;
@@ -178,9 +214,15 @@
         </div>
 
         <div class="pagination">
-            <button class="page-btn" id="prev-btn" onclick="prevPage()" disabled>上一页</button>
-            <span class="page-info">第 <span id="current-page">1</span> / 2 页</span>
-            <button class="page-btn" id="next-btn" onclick="nextPage()">下一页</button>
+            <button class="page-arrow" id="prev-btn" onclick="prevPage()" disabled>&lt;</button>
+            <div class="page-numbers" id="page-numbers"></div>
+            <button class="page-arrow" id="next-btn" onclick="nextPage()">&gt;</button>
+            <div class="page-jump">
+                <span>跳至</span>
+                <input type="text" id="jump-input" class="jump-input" onkeydown="if(event.key==='Enter')jumpToPage()">
+                <span>页</span>
+                <button class="jump-btn" onclick="jumpToPage()">确定</button>
+            </div>
         </div>
 
         <div class="stats">
@@ -192,7 +234,22 @@
         var currentPage = 1;
         var totalPages = 2;
 
+        function renderPageNumbers() {
+            var container = document.getElementById('page-numbers');
+            container.innerHTML = '';
+            for (var i = 1; i <= totalPages; i++) {
+                var btn = document.createElement('button');
+                btn.className = 'page-num' + (i === currentPage ? ' active' : '');
+                btn.textContent = i;
+                btn.onclick = (function(page) {
+                    return function() { showPage(page); };
+                })(i);
+                container.appendChild(btn);
+            }
+        }
+
         function showPage(page) {
+            if (page < 1 || page > totalPages) return;
             for (var i = 1; i <= totalPages; i++) {
                 var section = document.getElementById('page-' + i);
                 if (i === page) {
@@ -201,10 +258,10 @@
                     section.classList.remove('active');
                 }
             }
-            document.getElementById('current-page').textContent = page;
             document.getElementById('prev-btn').disabled = (page === 1);
             document.getElementById('next-btn').disabled = (page === totalPages);
             currentPage = page;
+            renderPageNumbers();
         }
 
         function prevPage() {
@@ -214,6 +271,19 @@
         function nextPage() {
             if (currentPage < totalPages) showPage(currentPage + 1);
         }
+
+        function jumpToPage() {
+            var input = document.getElementById('jump-input');
+            var page = parseInt(input.value, 10);
+            if (isNaN(page) || page < 1 || page > totalPages) {
+                alert('请输入 1 到 ' + totalPages + ' 之间的页码');
+                return;
+            }
+            showPage(page);
+            input.value = '';
+        }
+
+        renderPageNumbers();
     </script>
 </body>
 </html>
