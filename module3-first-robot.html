@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块3·我的第一个机器人 - 影刀RPA练习</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .breadcrumb { max-width: 800px; margin: 0 auto 24px; font-size: 14px; color: #aaa; }
+        .breadcrumb a { color: #4a90d9; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .header { text-align: center; max-width: 800px; margin: 0 auto 40px; }
+        .header .badge {
+            display: inline-block;
+            background: #4a90d9;
+            color: #fff;
+            font-size: 12px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .header h1 { font-size: 26px; color: #1a1a1a; margin-bottom: 8px; }
+        .header p { font-size: 14px; color: #888; }
+        .cards {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .category-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 36px 28px;
+            text-align: center;
+        }
+        .category-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .category-card .icon { font-size: 40px; margin-bottom: 16px; }
+        .category-card h2 { font-size: 20px; color: #1a1a1a; margin-bottom: 8px; }
+        .category-card p { font-size: 14px; color: #888; margin-bottom: 12px; }
+        .category-card .count { font-size: 13px; color: #bbb; }
+        .card-classroom { border-top: 4px solid #4a90d9; }
+        .card-homework { border-top: 4px solid #e65100; }
+        .footer { text-align: center; margin-top: 40px; color: #ccc; font-size: 12px; }
+        @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="index.html">首页</a> / 模块3·我的第一个机器人
+    </div>
+    <div class="header">
+        <span class="badge">模块 3</span>
+        <h1>我的第一个机器人</h1>
+        <p>批量数据抓取 · 打印日志 · 本章小结</p>
+    </div>
+    <div class="cards">
+        <a href="module3-classroom.html" class="category-card card-classroom">
+            <div class="icon">📝</div>
+            <h2>课堂作业</h2>
+            <p>课堂上跟随讲师同步练习</p>
+            <div class="count">共 2 题</div>
+        </a>
+        <a href="module3-homework.html" class="category-card card-homework">
+            <div class="icon">📕</div>
+            <h2>课后作业</h2>
+            <p>课后独立完成，巩固提升</p>
+            <div class="count">共 2 题</div>
+        </a>
+    </div>
+    <div class="footer">影刀初级课程 · 我的第一个机器人 · 2026-08</div>
+</body>
+</html>
