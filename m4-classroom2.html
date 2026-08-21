@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影刀RPA练习 - 课堂练习2：员工绩效评级判断</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px;
+        }
+        h1 { font-size: 22px; margin-bottom: 8px; color: #1a1a1a; }
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .breadcrumb { font-size: 14px; color: #aaa; margin-bottom: 24px; }
+        .breadcrumb a { color: #4a90d9; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .staff-list { display: flex; flex-direction: column; gap: 16px; }
+        .staff-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-left: 4px solid #4a90d9;
+            border-radius: 8px;
+            padding: 20px 24px;
+        }
+        .staff-name { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+        .staff-info { font-size: 13px; color: #999; display: flex; gap: 16px; }
+        .staff-info .dept { color: #4a90d9; }
+        .staff-info .score-label { color: #999; }
+        .staff-info .score { color: #e65100; font-weight: 600; }
+        .rating-rule {
+            margin-top: 28px;
+            padding: 18px 24px;
+            background: #fff8ee;
+            border: 1px solid #ffe0b2;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #8a6d3b;
+            line-height: 1.8;
+        }
+        .rating-rule strong { color: #e65100; }
+        .stats {
+            margin-top: 24px;
+            padding: 16px 24px;
+            background: #e8f1fb;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #2a7dc8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> / <a href="module4-condition.html">模块4·条件判断</a> / <a href="module4-classroom.html">课堂作业</a> / 课堂练习2
+        </div>
+        <h1>课堂练习2：员工绩效评级判断</h1>
+        <p class="subtitle">
+            考核知识点：获取元素信息、条件分支（多分支判断）、数字比较、数据表达式、打印日志<br>
+            任务：获取3位员工的姓名和绩效分数，按照评级标准判断每位员工的绩效评级，用打印日志输出结果
+        </p>
+
+        <div class="staff-list">
+            <div class="staff-card">
+                <div class="staff-name">李婷</div>
+                <div class="staff-info">
+                    <span class="dept">市场部</span>
+                    <span class="score-label">本月绩效分：</span><span class="score">92</span>
+                </div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-name">王强</div>
+                <div class="staff-info">
+                    <span class="dept">技术部</span>
+                    <span class="score-label">本月绩效分：</span><span class="score">78</span>
+                </div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-name">赵敏</div>
+                <div class="staff-info">
+                    <span class="dept">人事部</span>
+                    <span class="score-label">本月绩效分：</span><span class="score">65</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rating-rule">
+            <strong>绩效评级标准：</strong><br>
+            90分及以上：优秀　　80 - 89分：良好<br>
+            70 - 79分：合格　　70分以下：需改进
+        </div>
+
+        <div class="stats">
+            练习目标：按评级标准对每位员工做出判断，用打印日志输出「姓名 + 评级 + 分数」，例如：李婷本月绩效评级：优秀（92分）
+        </div>
+    </div>
+</body>
+</html>
+
