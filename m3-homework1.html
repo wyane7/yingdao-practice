@@ -118,8 +118,9 @@
             font-size: 14px;
             color: #2a7dc8;
         }
-        .page-section { display: none; }
-        .page-section.active { display: flex; flex-direction: column; gap: 16px; }
+        /* 翻页容器：只用 class 切换可见性，避免被相似元素捕获当作唯一父级锁死 */
+        .page-section { display: none; flex-direction: column; gap: 16px; }
+        .page-section.active { display: flex; }
     </style>
 </head>
 <body>
@@ -129,13 +130,13 @@
         </div>
         <h1>课后练习1：新闻资讯批量采集</h1>
         <p class="subtitle">
-            考核知识点：相似元素捕获、获取相似元素列表、点击元素（翻页）、变量、数据表达式、打印日志<br>
-            任务：新闻列表共2页，每页4条。搭建机器人抓取两页全部新闻的标题、日期、来源，用打印日志输出结果
+            考核知识点：相似元素捕获、获取相似元素列表、变量、数据表达式、打印日志<br>
+            任务：新闻列表共2页，合计 8 条新闻。搭建机器人抓取全部新闻的标题、日期、来源，用打印日志输出结果
         </p>
 
         <div class="news-list">
             <!-- 第1页 -->
-            <div class="page-section active" id="page-1">
+            <div class="page-section active" data-page="1">
                 <div class="news-item">
                     <div class="news-title">公司荣获2026年度创新企业奖</div>
                     <div class="news-meta">
@@ -174,7 +175,7 @@
             </div>
 
             <!-- 第2页 -->
-            <div class="page-section" id="page-2">
+            <div class="page-section" data-page="2">
                 <div class="news-item">
                     <div class="news-title">员工拓展训练营在杭州基地开营</div>
                     <div class="news-meta">
@@ -226,13 +227,15 @@
         </div>
 
         <div class="stats">
-            共 2 页 · 每页 4 条 · 合计 8 条新闻 · 练习目标：翻页抓取全部信息，用打印日志输出每条新闻的完整内容，最后输出采集总数
+            共 2 页 · 合计 8 条新闻 · 练习目标：用获取相似元素列表抓取全部信息，用打印日志输出每条新闻的完整内容，最后输出采集总数
         </div>
     </div>
 
     <script>
         var currentPage = 1;
         var totalPages = 2;
+        // 用 querySelectorAll 拿到所有 .page-section，避免硬编码 page-1 / page-2 的 id
+        var allSections = document.querySelectorAll('.page-section');
 
         function renderPageNumbers() {
             var container = document.getElementById('page-numbers');
@@ -250,9 +253,10 @@
 
         function showPage(page) {
             if (page < 1 || page > totalPages) return;
-            for (var i = 1; i <= totalPages; i++) {
-                var section = document.getElementById('page-' + i);
-                if (i === page) {
+            for (var i = 0; i < allSections.length; i++) {
+                var section = allSections[i];
+                var sectionPage = parseInt(section.getAttribute('data-page'), 10);
+                if (sectionPage === page) {
                     section.classList.add('active');
                 } else {
                     section.classList.remove('active');
