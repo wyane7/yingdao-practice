@@ -62,8 +62,34 @@
         }
         .product-name { font-size: 15px; color: #333; }
         .product-price { font-size: 18px; font-weight: bold; color: #e65100; }
-        .stats {
+        .rule {
             margin-top: 28px;
+            padding: 20px 24px;
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 8px;
+        }
+        .rule h3 {
+            font-size: 15px;
+            color: #b26a00;
+            margin-bottom: 10px;
+        }
+        .rule ul { list-style: none; }
+        .rule li {
+            font-size: 14px;
+            color: #6d4c00;
+            line-height: 1.9;
+            padding-left: 16px;
+            position: relative;
+        }
+        .rule li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #b26a00;
+        }
+        .stats {
+            margin-top: 20px;
             padding: 16px 24px;
             background: #e8f1fb;
             border-radius: 8px;
@@ -84,7 +110,7 @@
         <h1>课后练习2：A/B店比价购买建议</h1>
         <p class="subtitle">
             考核知识点：获取相似元素列表、商品匹配、条件分支（多分支）、数字比较与减法运算、嵌套条件、打印日志<br>
-            任务：获取A店和B店各4款商品的名称和价格，两店商品排列顺序不同，先匹配同款商品，再对每款商品判断在哪家购买更划算，输出购买建议
+            任务：获取A店和B店各4款商品的名称和价格，两店商品排列顺序不同，先匹配同款商品，再按下方判断规则对每款商品输出购买建议
         </p>
 
         <div class="compare-grid">
@@ -97,7 +123,7 @@
                     </div>
                     <div class="product-card">
                         <span class="product-name">无线鼠标</span>
-                        <span class="product-price">¥89</span>
+                        <span class="product-price">¥79</span>
                     </div>
                     <div class="product-card">
                         <span class="product-name">机械键盘</span>
@@ -119,7 +145,7 @@
                     </div>
                     <div class="product-card">
                         <span class="product-name">USB集线器</span>
-                        <span class="product-price">¥39</span>
+                        <span class="product-price">¥49</span>
                     </div>
                     <div class="product-card">
                         <span class="product-name">蓝牙耳机</span>
@@ -127,14 +153,24 @@
                     </div>
                     <div class="product-card">
                         <span class="product-name">无线鼠标</span>
-                        <span class="product-price">¥79</span>
+                        <span class="product-price">¥109</span>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="rule">
+            <h3>判断规则</h3>
+            <ul>
+                <li>A店价格更低：输出「商品名 建议在A店购买，比B店便宜N元」</li>
+                <li>B店价格更低：输出「商品名 建议在B店购买，比A店便宜N元」</li>
+                <li>两店价格相同：输出「商品名 两店价格相同，任选一家购买」</li>
+                <li>附加条件：当两店差价达到30元及以上时，在购买建议后追加输出「（差价较大，建议尽快下单）」</li>
+            </ul>
+        </div>
+
         <div class="stats">
-            A店 4 件商品 · B店 4 件商品（顺序不同） · 练习目标：匹配同款商品后，对每款商品判断哪家更划算并输出购买建议
+            A店 4 件商品 · B店 4 件商品（顺序不同） · 练习目标：匹配同款商品后，按判断规则对每款商品输出购买建议
         </div>
     </div>
 </body>
